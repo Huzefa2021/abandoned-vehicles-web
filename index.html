@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Abandoned Vehicle OCR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>OCR & Jurisdiction Lookup</h1>
+
+  <input type="file" id="photoInput" accept="image/*"><br><br>
+  <button id="processBtn">Process Photo</button>
+  <button id="sendToFormBtn" disabled>Send to Google Form</button>
+
+  <h3>OCR Result:</h3>
+  <pre id="ocrText"></pre>
+
+  <h3>Extracted Details:</h3>
+  <ul>
+    <li>Date: <span id="dateOut"></span></li>
+    <li>Time: <span id="timeOut"></span></li>
+    <li>Latitude: <span id="latOut"></span></li>
+    <li>Longitude: <span id="lonOut"></span></li>
+    <li>Ward: <span id="wardOut"></span></li>
+    <li>Beat: <span id="beatOut"></span></li>
+    <li>Address: <span id="addressOut"></span></li>
+    <li>Police Station: <span id="policeOut"></span></li>
+  </ul>
+
+  <!-- Hidden Google Form (IDs confirmed from your link) -->
+  <form id="gform" action="https://docs.google.com/forms/d/e/1FAIpQLSeo-xlOSxvG0IwtO5MkKaTJZNJkgTsmgZUw-FBsntFlNdRnCw/formResponse" method="POST" target="hidden_iframe" style="display:none;">
+    <input name="entry.1911996449" id="g_date">
+    <input name="entry.1421115881" id="g_time">
+    <input name="entry.113122688"  id="g_lat">
+    <input name="entry.419288992"  id="g_lon">
+    <input name="entry.1625337207" id="g_ward">
+    <input name="entry.1058310891" id="g_beat">
+    <input name="entry.1188611077" id="g_address">
+    <input name="entry.1555105834" id="g_police">
+  </form>
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <script src="libs/tesseract.min.js"></script>
+  <script src="libs/turf.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
